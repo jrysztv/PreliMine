@@ -1,0 +1,35 @@
+course_name,shorthand,preliminary,term_part_str,professor,mandatory_credits,elective_credits
+Mathematics and Informatics Pre-session for Business Analytics (remedial course),Pre-session,[],Pre,"Kiss, Oliver",0,3
+Maximizing Your Future (remedial course),MYF,[],F1,"Szarvas, Krisztina",0,2
+Coding 1: Data Management and Analysis with Python,Coding 1,['Pre-session'],F1,"Duronelly, Peter",1,0
+Data Analysis 1: Exploration - Business Analytics track,DA1,['Pre-session'],F1,"Sari, Andras / Duronelly, Peter",2,0
+Data Engineering 1: SQL and Different Shapes of Data,DE1,['Pre-session'],F1,"Sallo, Laszlo",2,0
+Data Visualization 1: Introduction to Data Visualization,DV1,['Pre-session'],F1,"Arato, Bence",1,0
+Data Analysis 2: Finding Patterns with Regressions - Business Analytics track,DA2,"['Pre-session', 'DA1']",F2,"Reguly, Agoston",2,0
+Data Engineering 2: Cloud Computing,DE2,"['DA1', 'DE1']",F2,"Toth, Zoltan",2,0
+Data Visualization 2: Charting in Python,DV2,['DV1'],F2,"Arato, Bence",1,0
+Coding 2: Web scraping with Python,Coding 2,"['Pre-session', 'DA1']",F2,"Orsos, Mihaly",1,0
+Coding Practice with Python (remedial course) F1,Code Pr 1,['Pre-session'],F1,"Orsos, Mihaly",0,2
+Coding Practice with Python (remedial course) F2,Code Pr 2,['Pre-session'],F2,"Orsos, Mihaly",0,2
+Financial Management,FinMan,['Pre-session'],F1,"Danis, Andras",2,0
+Data Analysis 3: Prediction and Introduction to Machine Learning,DA3,"['Coding 1', 'DA1', 'DA2']",W1,"Bekes, Gabor / Duronelly, Peter",3,0
+Discovering Discrimination with Data,DiscDat,['DA2'],W1,"Koren, Miklos / Csoka, Imola",1,0
+Data Science 1: Machine Learning,DS1,"['DA1', 'DA2', 'DA3']",W2,"Divenyi, Janos",2,0
+Use Case Seminars 1.,UCS1,"['Pre-session', 'DA1']",W1,"Weidinger, Wolfgang",1,0
+Coding 3: Introduction to R,Coding 3,['Coding 1'],W1,"Daroczi, Gergely",1,0
+Data Visualization 3: Practical Data Visualization with R,DV3,['DA2'],W1,"Daroczi, Gergely",1,0
+Agile Project Management and Scrum,AgPM,['Pre-session'],W1,"Sallo, Laszlo / Veress, Attila",1,0
+Scientific Python,SciPy,"['Coding 1', 'DA1', 'DA2']",W1,"Posfai, Marton",2,0
+Banking IT and Fintech: Bank to the Future,Fintech,['Pre-session'],W2,"Szalay, Szabolcs",2,0
+Time Series Forecasting,TSF,"['DA1', 'DA2', 'DA3', 'DS1']",W2,"Langen, Henrika",1,0
+Data Analysis 4: Causal Analysis (advanced),DA4,[],W2,"Bekes, Gabor / Karpov, Danila",2,0
+Introduction to Geospatial Data Science,GeoDS,[],W2,"Janosov, Milan",1,0
+Entrepreneurship and Innovation,EntrInn,['Pre-session'],W2,"Kozma, Andrea",2,0
+Designing Analytics Projects (Capstone Project Development Seminar),DAP,"['DA1', 'DA2', 'DA3', 'DS1']",S,"de la Rubia, Eduardo",1,0
+Use Case Seminars 2.,UCS2,"['DE2', 'DA3']",S,"Daroczi, Gergely",1,0
+Data Engineering 4: Big Data Computing with Apache Spark,DE4,"['DE2', 'Python']",S,"Toth, Zoltan",1,0
+Data Visualization 4: Building Dashboards,DV4,"['DV2', 'DE3']",S,"Daroczi, Gergely",1,0
+Data Engineering 3: Batch Jobs and APIs,DE3,"['DA2', 'DV2']",S,"Daroczi, Gergely",1,0
+Data Science 3: Deep Learning,DS3,"['DA1', 'DA2', 'DA3', 'DS1']",S,"de la Rubia, Eduardo",1,0
+Capstone Project Writing (non-taught course),Capstone W,[],S,"de la Rubia, Eduardo",2,0
+Capstone Project (non-taught course),Capstone,[],S,"de la Rubia, Eduardo",2,0

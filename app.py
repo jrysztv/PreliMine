@@ -1,54 +1,67 @@
+# import ast
+# import pandas as pd
 import streamlit as st
-from prelimine.course_graph import create_course_graph, draw_course_graph
+from prelimine.course_graph import create_course_graph, draw_course_graph, extract_data
 
 # Constants
-LABEL_COLUMNS = ["Course Name", "Semester", "Professor"]
+LABEL_COLUMNS = [
+    "Course Name",
+    "Semester",
+    "Professor",
+    "Mandatory Credits",
+    "Elective Credits",
+    "Preliminary",
+]
+
+st.set_page_config(layout="wide")
+
+data = extract_data("data.csv")
 
 # Sample data
-data = [
-    {
-        "course_name": "Introduction to Programming",
-        "shorthand": "ITP",
-        "preliminary": [],
-        "semester": 1,
-        "professor": "Dr. Smith",
-    },
-    {
-        "course_name": "Data Structures",
-        "shorthand": "DST",
-        "preliminary": ["ITP"],
-        "semester": 2,
-        "professor": "Dr. Johnson",
-    },
-    {
-        "course_name": "Algorithms",
-        "shorthand": "ALG",
-        "preliminary": ["DST", "ITP"],
-        "semester": 3,
-        "professor": "Dr. Williams",
-    },
-    {
-        "course_name": "Operating Systems",
-        "shorthand": "OPS",
-        "preliminary": ["DST"],
-        "semester": 3,
-        "professor": "Dr. Brown",
-    },
-    {
-        "course_name": "Database Systems",
-        "shorthand": "DBS",
-        "preliminary": ["DST"],
-        "semester": 3,
-        "professor": "Dr. Davis",
-    },
-    {
-        "course_name": "Software Engineering",
-        "shorthand": "SWE",
-        "preliminary": ["ALG", "OPS", "DBS"],
-        "semester": 4,
-        "professor": "Dr. Miller",
-    },
-]
+# data = [
+#     {
+#         "course_name": "Introduction to Programming",
+#         "shorthand": "ITP",
+#         "preliminary": [],
+#         "semester": 1,
+#         "professor": "Dr. Smith",
+#     },
+#     {
+#         "course_name": "Data Structures",
+#         "shorthand": "DST",
+#         "preliminary": ["ITP"],
+#         "semester": 2,
+#         "professor": "Dr. Johnson",
+#     },
+#     {
+#         "course_name": "Algorithms",
+#         "shorthand": "ALG",
+#         "preliminary": ["DST", "ITP"],
+#         "semester": 3,
+#         "professor": "Dr. Williams",
+#     },
+#     {
+#         "course_name": "Operating Systems",
+#         "shorthand": "OPS",
+#         "preliminary": ["DST"],
+#         "semester": 3,
+#         "professor": "Dr. Brown",
+#     },
+#     {
+#         "course_name": "Database Systems",
+#         "shorthand": "DBS",
+#         "preliminary": ["DST"],
+#         "semester": 3,
+#         "professor": "Dr. Davis",
+#     },
+#     {
+#         "course_name": "Software Engineering",
+#         "shorthand": "SWE",
+#         "preliminary": ["ALG", "OPS", "DBS"],
+#         "semester": 4,
+#         "professor": "Dr. Miller",
+#     },
+# ]
 
 st.title("Course Dependency Graph")
 

@@ -1,6 +1,8 @@
 import networkx as nx
+import pandas as pd
 import plotly.graph_objects as go
 import numpy as np
+import ast
 
 
 def create_course_graph(data):
@@ -8,9 +10,19 @@ def create_course_graph(data):
 
     # Add nodes and edges
     for course in data:
+        # Ensure that the semester is present
+        course_semester = course.get("semester", None)
+        if course_semester is None:
+            print(f"Warning: Course {course['shorthand']} is missing a semester value.")
+            course["semester"] = 0  # Assign a default value if semester is missing
+
         G.add_node(course["shorthand"], **course)
-        for pre in course["preliminary"]:
-            G.add_edge(pre, course["shorthand"])
+
+        # Add edges based on the preliminary courses
+        preliminaries = course["preliminary"]
+        for pre in preliminaries:
+            if pre in G.nodes:  # Only add the edge if the preliminary course exists
+                G.add_edge(pre, course["shorthand"])
 
     return G
 
@@ -20,7 +32,7 @@ def semester_pos(G):
     # Group nodes by semester
     semester_groups = {}
     for node in G.nodes(data=True):
-        semester = node[1]["semester"]
+        semester = node[1].get("semester", None)
         if semester not in semester_groups:
             semester_groups[semester] = []
         semester_groups[semester].append(node[0])
@@ -124,14 +136,14 @@ def draw_course_graph(G, label_columns):
     fig = go.Figure(
         data=[edge_trace, node_trace],
         layout=go.Layout(
-            title="Strict Hierarchical Tree Layout of Courses",
+            title="Hierarchical Course Dependencies by Semester",
             titlefont_size=16,
             showlegend=False,
             hovermode="closest",
             margin=dict(b=0, l=0, r=0, t=50),
             annotations=[
                 dict(
-                    text="Course Dependencies",
+                    text="CEU Business Analytics 2024/2025",
                     showarrow=False,
                     xref="paper",
                     yref="paper",
@@ -145,3 +157,26 @@ def draw_course_graph(G, label_columns):
     )
 
     return fig
+
+
+def extract_data(source_excel="data.csv"):
+    if type(source_excel) is str and source_excel.endswith(".csv"):
+        df = pd.read_csv(source_excel)
+    else:
+        df = pd.read_excel(source_excel)
+    df["preliminary"] = df["preliminary"].apply(ast.literal_eval)
+    df["semester"] = df["term_part_str"].replace(
+        {"Pre": 0, "F1": 1, "F2": 2, "W1": 3, "W2": 4, "S": 5}
+    )
+    data = df.to_dict(orient="records")
+    return data
+
+
+if __name__ == "__main__":
+    # Constants
+    LABEL_COLUMNS = ["Course Name", "Semester", "Professor"]
+    data = extract_data()
+    # Create the graph
+    G = create_course_graph(data)
+    # Draw the graph and get the figure
+    fig = draw_course_graph(G, label_columns=LABEL_COLUMNS)
